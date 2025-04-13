@@ -1,30 +1,40 @@
-#grid {
-    display: grid;
-    grid-template-columns: repeat(8, 16px);
-    grid-template-rows: repeat(8, 16px);
-    gap: 1px;
+body {
+    background-color: black;
+    color: aliceblue;
 }
 
-.wall {
-    background-color:gray;
+#grid {
+    position: fixed;
+    top: 30%;
+    left: 35%;
+    display: grid;
+    grid-template-columns: repeat(12, 16px);
+    grid-template-rows: repeat(12, 16px);
+    gap: 3px;
+}
+
+#grid div {
     width: 16px;
     height: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.wall {
+    background-color:gray;
 }
 
 .floor {
     background-color:green;
-    width: 16px;
-    height: 16px;
 }
 
 .food {
     background-color:red;
-    width: 16px;
-    height: 16px;
 }
 
 .snake {
-    background-color:white;
-    width: 16px;
-    height: 16px;
+    background-color:yellow;
+}
+
+.head {
+    background-color:orange;
 }
