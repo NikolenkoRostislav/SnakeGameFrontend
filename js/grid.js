@@ -5,6 +5,7 @@ export const CellType = {
     WALL: 'wall',
     FLOOR: 'floor',
     SNAKE: 'snake',
+    HEAD: 'head',
     FOOD: 'food'
 };
 
@@ -25,22 +26,7 @@ export function renderGrid() {
     gridData.forEach((row) => {
         row.forEach((cell) => {
             const div = document.createElement("div");
-            switch (cell) {
-                case CellType.WALL:
-                    div.className = "wall";
-                    break;
-                case CellType.SNAKE:
-                    div.className = "snake";
-                    break;
-                case CellType.HEAD:
-                    div.className = "head";
-                    break;
-                case CellType.FOOD:
-                    div.classList.add("food");
-                    break;
-                default:
-                    div.classList.add("floor");
-            }
+            div.className = cell;
             grid.appendChild(div);
         });
     });

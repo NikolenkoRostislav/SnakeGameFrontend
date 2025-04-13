@@ -19,16 +19,6 @@ let direction = Direction.RIGHT;
 
 gridData[4][8] = CellType.FOOD; // this is for testing only I'll move the food spawn logic to a different script logic 
 
-function renderSnake() {
-    snake.forEach(segment => {
-        if(segment === snake[snake.length - 1]){
-            gridData[segment.x][segment.y] = CellType.HEAD;
-        }else{
-            gridData[segment.x][segment.y] = CellType.SNAKE;
-        }
-    });
-}
-
 function checkCollision() {
     let collided = gridData[snake[snake.length - 1].x][snake[snake.length - 1].y];
     if(collided === CellType.WALL || collided === CellType.SNAKE){
@@ -38,6 +28,16 @@ function checkCollision() {
         gridData[snake[0].x][snake[0].y] = CellType.FLOOR;
         snake.shift();
     } 
+}
+
+function renderSnake() {
+    snake.forEach(segment => {
+        if(segment === snake[snake.length - 1]){
+            gridData[segment.x][segment.y] = CellType.HEAD;
+        }else{
+            gridData[segment.x][segment.y] = CellType.SNAKE;
+        }
+    });
 }
 
 export function moveSnake(){
