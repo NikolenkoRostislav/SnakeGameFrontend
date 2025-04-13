@@ -1,0 +1,30 @@
+#grid {
+    display: grid;
+    grid-template-columns: repeat(8, 16px);
+    grid-template-rows: repeat(8, 16px);
+    gap: 1px;
+}
+
+.wall {
+    background-color:gray;
+    width: 16px;
+    height: 16px;
+}
+
+.floor {
+    background-color:green;
+    width: 16px;
+    height: 16px;
+}
+
+.food {
+    background-color:red;
+    width: 16px;
+    height: 16px;
+}
+
+.snake {
+    background-color:white;
+    width: 16px;
+    height: 16px;
+}
