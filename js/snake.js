@@ -1,4 +1,5 @@
 import {gridData, CellType} from './grid.js';
+import {spawnFood} from './food.js';
 
 class Snake {
     constructor(x, y) {
@@ -14,10 +15,11 @@ const Direction = {
     RIGHT: 'right'
 };
 
-let snake = [new Snake(4, 2), new Snake(4, 3), new Snake(4, 4)];
-let direction = Direction.RIGHT;
+let snake = [new Snake(gridData.length / 2 - 1, gridData.length / 2 - 3), 
+             new Snake(gridData.length / 2 - 1, gridData.length / 2 - 2), 
+             new Snake(gridData.length / 2 - 1, gridData.length / 2 - 1)];
 
-gridData[4][8] = CellType.FOOD; // this is for testing only I'll move the food spawn logic to a different script logic 
+let direction = Direction.RIGHT;
 
 function checkCollision() {
     let collided = gridData[snake[snake.length - 1].x][snake[snake.length - 1].y];
@@ -27,7 +29,10 @@ function checkCollision() {
     } else if(collided !== CellType.FOOD){
         gridData[snake[0].x][snake[0].y] = CellType.FLOOR;
         snake.shift();
-    } 
+    } else {
+        console.log("Food eaten");
+        spawnFood();
+    }
 }
 
 function renderSnake() {
