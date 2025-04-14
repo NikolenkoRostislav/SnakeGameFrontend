@@ -7,7 +7,7 @@ export const Direction = {
     RIGHT: 'right'
 };
 
-export let direction = Direction.RIGHT;
+let direction = Direction.RIGHT;
 
 function changeDirection(e) {
     const LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
@@ -15,4 +15,8 @@ function changeDirection(e) {
     if (e.keyCode === RIGHT && direction != Direction.LEFT) { direction = Direction.RIGHT; }
     if (e.keyCode === UP && direction != Direction.DOWN) { direction = Direction.UP; }
     if (e.keyCode === DOWN && direction != Direction.UP) { direction = Direction.DOWN; }
+}
+
+export function getDirection() {
+    return direction;
 }
