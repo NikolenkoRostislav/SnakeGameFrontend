@@ -9,9 +9,10 @@ body {
 }
 
 #grid {
-    position: fixed;
-    top: calc(50% - var(--grid-res) * var(--grid-item-size) / 2);
-    left: calc(50% - var(--grid-res) * var(--grid-item-size) / 2);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
     grid-template-columns: repeat(var(--grid-res), var(--grid-item-size));
     grid-template-rows: repeat(var(--grid-res), var(--grid-item-size));
@@ -24,6 +25,23 @@ body {
     border: 1px solid black;
     border-radius: 5px;
 }
+
+#intro {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    
+    border: 1px solid black;
+    border-radius: 15px;
+    z-index: 100;
+    font-size: 3em;
+    text-align: center;
+    color: black;
+    background-color: orange;
+}
+
 .wall {
     background-color:gray;
 }
