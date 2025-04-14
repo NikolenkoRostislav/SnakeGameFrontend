@@ -1,4 +1,5 @@
 import {gridData, CellType} from './grid.js';
+import {Direction} from './controls.js';
 import {spawnFood} from './food.js';
 
 class Snake {
@@ -8,18 +9,9 @@ class Snake {
     }
 }
 
-const Direction = {
-    UP: 'up',
-    DOWN: 'down',
-    LEFT: 'left',
-    RIGHT: 'right'
-};
-
 let snake = [new Snake(gridData.length / 2 - 1, gridData.length / 2 - 3), 
              new Snake(gridData.length / 2 - 1, gridData.length / 2 - 2), 
              new Snake(gridData.length / 2 - 1, gridData.length / 2 - 1)];
-
-let direction = Direction.RIGHT;
 
 function checkCollision() {
     let collided = gridData[snake[snake.length - 1].x][snake[snake.length - 1].y];
@@ -30,7 +22,6 @@ function checkCollision() {
         gridData[snake[0].x][snake[0].y] = CellType.FLOOR;
         snake.shift();
     } else {
-        console.log("Food eaten");
         spawnFood();
     }
 }
@@ -45,14 +36,13 @@ function renderSnake() {
     });
 }
 
-export function moveSnake(){
-    
+export function moveSnake(direction){
     switch(direction){
         case Direction.UP:
-            snake.push(new Snake(snake[snake.length - 1].x + 1, snake[snake.length - 1].y));
+            snake.push(new Snake(snake[snake.length - 1].x - 1, snake[snake.length - 1].y));
             break;
         case Direction.DOWN:
-            snake.push(new Snake(snake[snake.length - 1].x - 1, snake[snake.length - 1].y));
+            snake.push(new Snake(snake[snake.length - 1].x + 1, snake[snake.length - 1].y));
             break;
         case Direction.RIGHT:
             snake.push(new Snake(snake[snake.length - 1].x , snake[snake.length - 1].y + 1));
