@@ -1,6 +1,7 @@
 import {gridData, CellType} from './grid.js';
 import {Direction} from './controls.js';
 import {spawnFood} from './food.js';
+import {addPoints, getPoints} from './points.js';
 
 class Snake {
     constructor(x, y) {
@@ -16,13 +17,14 @@ let snake = [new Snake(gridData.length / 2 - 1, gridData.length / 2 - 3),
 function checkCollision() {
     let collided = gridData[snake[snake.length - 1].x][snake[snake.length - 1].y];
     if(collided === CellType.WALL || collided === CellType.SNAKE){
-        alert("Game Over");
+        alert("Game Over, you got " + getPoints() + " points!");
         location.reload();
     } else if(collided !== CellType.FOOD){
         gridData[snake[0].x][snake[0].y] = CellType.FLOOR;
         snake.shift();
     } else {
         spawnFood();
+        addPoints();
     }
 }
 
