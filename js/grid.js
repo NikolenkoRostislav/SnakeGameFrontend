@@ -6,6 +6,7 @@ export const CellType = {
     FLOOR: 'floor',
     SNAKE: 'snake',
     HEAD: 'head',
+    TAIL: 'tail',
     FOOD: 'food'
 };
 

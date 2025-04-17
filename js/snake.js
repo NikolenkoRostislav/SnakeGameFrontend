@@ -3,16 +3,16 @@ import {Direction} from './controls.js';
 import {spawnFood} from './food.js';
 import {addPoints, getPoints} from './points.js';
 
-class Snake {
+class SnakePart {
     constructor(x, y) {
         this.x = x;
         this.y = y;
     }
 }
 
-let snake = [new Snake(gridData.length / 2 - 1, gridData.length / 2 - 3), 
-             new Snake(gridData.length / 2 - 1, gridData.length / 2 - 2), 
-             new Snake(gridData.length / 2 - 1, gridData.length / 2 - 1)];
+let snake = [new SnakePart(gridData.length / 2 - 1, gridData.length / 2 - 3), 
+             new SnakePart(gridData.length / 2 - 1, gridData.length / 2 - 2), 
+             new SnakePart(gridData.length / 2 - 1, gridData.length / 2 - 1)];
 
 function checkCollision() {
     let collided = gridData[snake[snake.length - 1].x][snake[snake.length - 1].y];
@@ -32,6 +32,8 @@ function renderSnake() {
     snake.forEach(segment => {
         if(segment === snake[snake.length - 1]){
             gridData[segment.x][segment.y] = CellType.HEAD;
+        }else if (segment === snake[0]){
+            gridData[segment.x][segment.y] = CellType.TAIL;
         }else{
             gridData[segment.x][segment.y] = CellType.SNAKE;
         }
@@ -41,16 +43,16 @@ function renderSnake() {
 export function moveSnake(direction){
     switch(direction){
         case Direction.UP:
-            snake.push(new Snake(snake[snake.length - 1].x - 1, snake[snake.length - 1].y));
+            snake.push(new SnakePart(snake[snake.length - 1].x - 1, snake[snake.length - 1].y));
             break;
         case Direction.DOWN:
-            snake.push(new Snake(snake[snake.length - 1].x + 1, snake[snake.length - 1].y));
+            snake.push(new SnakePart(snake[snake.length - 1].x + 1, snake[snake.length - 1].y));
             break;
         case Direction.RIGHT:
-            snake.push(new Snake(snake[snake.length - 1].x , snake[snake.length - 1].y + 1));
+            snake.push(new SnakePart(snake[snake.length - 1].x , snake[snake.length - 1].y + 1));
             break;
         case Direction.LEFT:
-            snake.push(new Snake(snake[snake.length - 1].x , snake[snake.length - 1].y - 1));
+            snake.push(new SnakePart(snake[snake.length - 1].x , snake[snake.length - 1].y - 1));
             break;
     }
     

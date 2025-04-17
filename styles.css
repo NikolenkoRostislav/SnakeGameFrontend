@@ -55,9 +55,13 @@ body {
 }
 
 .snake {
-    background-color:yellow;
+    background-color:gold;
 }
 
 .head {
     background-color:orange;
+}
+
+.tail {
+    background-color:yellow;
 }
